@@ -1,0 +1,27 @@
+:root {
+	--text-color: #3c3e44;
+	--bg-color: #ebf0f3;
+	--card-color: #fff;
+	--secondary-color: #8c8c8c;
+ 	--border: 1px solid #dddede;
+	--shadow-btn: #0bbc41 0px 15px 10px -10px;
+	--hover-color: #00afff;
+	--accent-color: #0bbc41;
+
+	--transition: 0.3s ease-in-out;
+}
+
+html,
+body {
+	color: var(--text-color);
+	background-color: var(--bg-color);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}

@@ -1,0 +1,29 @@
+.dinamicTag {
+	height: auto;
+	width: auto;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: transparent;
+	border: none;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+.button {
+	color: #fff;
+	background-color: #0dd149;
+	border: 1px solid #0dd149;
+	border-radius: 4px;
+	padding: 0px 20px;
+	line-height: 32px;
+	font-size: 15px;
+	letter-spacing: 0.3px;
+	text-align: center;
+}
