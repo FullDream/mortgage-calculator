@@ -1,7 +1,7 @@
 .wrapper {
-    background-color: var(--card-color);
+	background-color: var(--card-color);
 
-    border-bottom: var(--border);
+	border-bottom: var(--border);
 }
 
 .container {
@@ -13,26 +13,30 @@
 }
 
 .header {
-	min-height: 400px;
-    display: grid;
-    justify-content: center;
-    align-content: center;
+	min-height: 200px;
+	display: grid;
+	justify-content: center;
+	align-content: center;
 }
 
 .title {
-	font-size: 50px;
-    text-align: center;
+	font-size: clamp(20px, 6vw, 46px);
+	text-align: center;
 }
 
-
 .content {
-    margin: 30px auto 0 auto;
-    padding: 0 30px;
-    max-width: 1320px;
+	margin: 30px auto 0 auto;
+	padding: 0 30px 30px;
+	max-width: 1320px;
+}
+
+.listCard {
+	@media screen and (max-width: 1130px) {
+		
+	}
 }
 
 .loadBtn {
-    display: block;
-    margin: 30px auto 0;
-    
+	display: block;
+	margin: 30px auto 0;
 }

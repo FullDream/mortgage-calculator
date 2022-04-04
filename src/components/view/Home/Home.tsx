@@ -36,7 +36,7 @@ export const HomePage = () => {
 			<div className={styles.content}>
 				<Sort />
 				{data && (
-					<motion.ul layout layoutId='dd'>
+					<motion.ul layout layoutId='list' className={styles.listCard}>
 						{data.map((item) => (
 							<Card key={item.alias} {...item} />
 						))}

@@ -7,7 +7,7 @@ import styles from './CreditAndPeriods.module.scss'
 
 export const CreditAndPeriods = ({ creditAmount, term }: CreditAndPeriodsProps) => {
 	return (
-		<CardItem>
+		<CardItem className={styles.wrapper}>
 			<span className={styles.credit}>
 				{transformCreditAmount(creditAmount)}
 			</span>

@@ -1,5 +1,5 @@
 .fieldset {
-	font-size: 16px;
+	font-size: clamp(12px, 1vw, 16px);
 	display: grid;
 	grid-template-columns: max-content repeat(2, auto) 1fr;
 	padding: 15px 30px;
@@ -7,8 +7,12 @@
 	gap: 10px;
 	align-items: center;
 
-    border: var(--border);
-    border-radius: 8px 8px 0 0;
+	border: var(--border);
+	border-radius: 8px 8px 0 0;
+
+	@media screen and (max-width: 425px) {
+		padding: 10px;
+	}
 }
 
 .legend {
@@ -16,21 +20,19 @@
 	display: contents;
 }
 
-
-
 .label {
 	position: relative;
 }
 
 .name {
 	opacity: 0.5;
-    cursor: pointer;
-    transition: var(--transition);
+	cursor: pointer;
+	transition: var(--transition);
 
-    &:hover {
-        opacity: 1;
-        color: var(--hover-color);
-    }
+	&:hover {
+		opacity: 1;
+		color: var(--hover-color);
+	}
 }
 
 .active {
@@ -43,11 +45,8 @@
 	width: 100%;
 	position: absolute;
 	border-bottom: 3px solid var(--accent-color);
-
 }
 
 .input {
 	appearance: none;
-
-
 }

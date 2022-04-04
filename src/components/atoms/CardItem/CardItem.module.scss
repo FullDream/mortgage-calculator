@@ -3,4 +3,8 @@
     align-items: center;
     justify-items: start;
     width: 100%;
+
+    @media screen and (max-width: 425px) {
+            justify-items: center;
+    }
 }
