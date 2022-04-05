@@ -36,3 +36,15 @@ export const transformCreditTerm = (termTo: number) => {
 
 export const transformCreditAmount = ({ from, to }: CreditAmount) =>
 	to ? `${priceRu(from)} - ${priceRu(to)}` : `от ${priceRu(from)}`
+
+export const replaceNameBank = (name: string) => name.replace(/анк/gi, 'анка')
+
+
+export const createTermCredit = ({ from, to }:Offset) => {	
+	from /= 12
+	to /= 12
+	if(from < 1) {
+		return `до ${to} ${decOfNum(to, ['год', 'года', 'лет'])}`
+	}	
+	return `${from} ${decOfNum(from, ['год', 'года', 'лет'])} - ${to} ${decOfNum(to, ['год', 'года', 'лет'])}`
+}

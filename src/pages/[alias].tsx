@@ -1,33 +1,38 @@
 import React from 'react'
-import { useSelector, useStore } from 'react-redux'
 import Link from 'next/link'
-import { getAlias, wrapper } from '../store'
+import {  makeStore, wrapper } from '../store'
+import { getOffersList, getOfferByAlias, getRunningOperationPromises } from 'store/api/offersApi'
+import { Product } from 'components'
 
-const Page = (props) => {
+const Page = () => {
 	return (
-		<div>
-			<Link href='/'>
-				<a> home page</a>
-			</Link>
-		</div>
+		<Product/>
 	)
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-	(store) =>
-		async ({ params }) => {
-			const { alias } = params
+export const getStaticPaths = async () => {
+	const store = makeStore()
+	const res = await store.dispatch(getOffersList.initiate())
 
-			console.log(params)
+	return {
+		paths: res.data?.map(({ alias }) => `/${alias}`),
+		fallback: true,
+	}
+}
 
-			await store.dispatch(getAlias(alias))
-
-			return {
-				props: {
-					alias,
-				},
+export const getStaticProps = wrapper.getStaticProps(
+	(store) => async (context) => {
+	 	const alias = context.params?.alias
+		 if (typeof alias === 'string') {
+				store.dispatch(getOfferByAlias.initiate(alias))
 			}
+
+		await Promise.all(getRunningOperationPromises())
+
+		return {
+			props: {},
 		}
+	}
 )
 
 export default Page

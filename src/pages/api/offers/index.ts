@@ -32,5 +32,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
 	res.json(base)
 
-	// a.rate.creditAmount.from > b.rate.creditAmount.from ? 1 : -1
 }

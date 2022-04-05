@@ -13,7 +13,10 @@ export const offersApi = createApi({
 	},
 	tagTypes: [],
 	endpoints: (builder) => ({
-		getOffersList: builder.query<Offer[], {offset?: number, sort?: string | string[]}>({
+		getOffersList: builder.query<
+			Offer[],
+			{ offset?: number; sort?: string | string[] } | undefined
+		>({
 			query: (arg) => {
 				return {
 					url: `offers`,
@@ -21,12 +24,16 @@ export const offersApi = createApi({
 				}
 			},
 		}),
+		getOfferByAlias: builder.query<Offer, string>({
+			query: (alias) => `offers/${alias}`,
+		}),
 	}),
 })
 
 export const {
 	useGetOffersListQuery,
+	useGetOfferByAliasQuery,
 	util: { getRunningOperationPromises },
 } = offersApi
 
-export const { getOffersList } = offersApi.endpoints
+export const { getOffersList, getOfferByAlias } = offersApi.endpoints

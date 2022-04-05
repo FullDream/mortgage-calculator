@@ -3,6 +3,7 @@ import { wrapper } from 'store'
 
 import '../styles/reboot.scss'
 import '../styles/globals.scss'
+
 const MyApp = ({ Component, pageProps }: AppProps) => (
 	<Component {...pageProps} />
 )

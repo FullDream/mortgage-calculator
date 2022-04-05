@@ -1,5 +1,6 @@
 export * from './atoms/CardItem/CardItem'
 export * from './atoms/Button/Button'
+export * from './molecules/Feature/Feature'
 
 export * from './molecules/Sort/Sort'
 export * from './molecules/RateAndName/RateAndName'
@@ -10,5 +11,6 @@ export * from './molecules/MoreCard/MoreCard'
 export * from './organisms/Card/Card'
 
 export * from './view/Home/Home'
+export * from './view/Product/Product'
 
 
