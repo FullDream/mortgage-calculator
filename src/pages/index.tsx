@@ -12,8 +12,8 @@ export default Home
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
-    
-    await store.dispatch(getOffersList.initiate({offset: 10}))
+
+    await store.dispatch(getOffersList.initiate({ offset: 10, ...context.query }))
 
     await Promise.all(getRunningOperationPromises())
 

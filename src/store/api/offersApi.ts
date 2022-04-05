@@ -4,7 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper'
 
 export const offersApi = createApi({
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:3000/api/',
+		baseUrl: process.env.NEXT_PUBLIC_DOMAIN + '/api',
 	}),
 	extractRehydrationInfo(action, { reducerPath }) {
 		if (action.type === HYDRATE) {
@@ -15,18 +15,17 @@ export const offersApi = createApi({
 	endpoints: (builder) => ({
 		getOffersList: builder.query<
 			Offer[],
-			{ offset?: number; sort?: string | string[] } 
+			{ offset?: number; sort?: string | string[] }
 		>({
 			query: (arg) => {
-
 				return {
-					url: `offers`,
+					url: `/offers`,
 					params: { ...arg },
 				}
 			},
 		}),
 		getOfferByAlias: builder.query<Offer, string>({
-			query: (alias) => `offers/${alias}`,
+			query: (alias) => `/offers/${alias}`,
 		}),
 	}),
 })
