@@ -11,8 +11,9 @@ const Page = () => {
 }
 
 export const getStaticPaths = async () => {
-	const store = makeStore()
-	const res = await store.dispatch(getOffersList.initiate())
+	const store =  makeStore()
+	const res = await store.dispatch(getOffersList.initiate({}))
+	
 
 	return {
 		paths: res.data?.map(({ alias }) => `/${alias}`),

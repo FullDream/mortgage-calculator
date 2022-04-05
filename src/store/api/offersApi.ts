@@ -15,9 +15,10 @@ export const offersApi = createApi({
 	endpoints: (builder) => ({
 		getOffersList: builder.query<
 			Offer[],
-			{ offset?: number; sort?: string | string[] } | undefined
+			{ offset?: number; sort?: string | string[] } 
 		>({
 			query: (arg) => {
+
 				return {
 					url: `offers`,
 					params: { ...arg },
