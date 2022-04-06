@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { Button, Card, Sort } from 'components'
+import { Button, Card, Sort, Filter } from 'components'
 import { useGetOffersListQuery } from 'store/api/offersApi'
 
 import styles from './Home.module.scss'
@@ -19,6 +20,19 @@ export const HomePage = () => {
 
 	const disabledButton = () => data && offset > data?.length
 
+
+	
+	const activeFilter = useSelector((state) => state.filters.purpose)
+	 const filteredOffers = useMemo(() => {
+			const filteredOffers = data?.slice()
+
+			if (activeFilter === '') {
+				return filteredOffers
+			} else {
+				return filteredOffers?.filter((item) => item.name === activeFilter)
+			}
+		}, [data, activeFilter])
+
 	return (
 		<>
 			<Head>
@@ -29,6 +43,7 @@ export const HomePage = () => {
 					<header className={styles.header}>
 						<h1 className={styles.title}>Ипотечный калькулятор</h1>
 					</header>
+					<Filter />
 				</div>
 			</div>
 
@@ -36,7 +51,7 @@ export const HomePage = () => {
 				<Sort />
 				{data && (
 					<motion.ul layout layoutId='list' className={styles.listCard}>
-						{data.map((item) => (
+						{filteredOffers?.map((item) => (
 							<Card key={item.alias} {...item} />
 						))}
 					</motion.ul>

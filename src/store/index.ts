@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 import { offersApi } from './api/offersApi'
+import filters from './slices/filterSlice'
 
 export const makeStore = () =>
 	configureStore({
 		reducer: {
 			[offersApi.reducerPath]: offersApi.reducer,
+			filters,
 		},
 		middleware: (gDM) => gDM().concat(offersApi.middleware),
 	})

@@ -8,6 +8,7 @@ export * from './molecules/Requirements/Requirements'
 export * from './molecules/CreditAndPeriods/CreditAndPeriods'
 export * from './molecules/MoreCard/MoreCard'
 
+export * from './organisms/Filter/Filter'
 export * from './organisms/Card/Card'
 
 export * from './view/Home/Home'
