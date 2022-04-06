@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 
 import { Button, Card, Sort } from 'components'
 import { useGetOffersListQuery } from 'store/api/offersApi'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import styles from './Home.module.scss'
 
@@ -12,7 +14,7 @@ export const HomePage = () => {
 	const { query: {sort} } = useRouter()
 	const [offset, setOffset] = useState(10)
 	const result = useGetOffersListQuery({ offset, sort: sort })
-	const { data } = result
+	const { data, isLoading, isFetching } = result
 
 
 	const onOffersLoaded = () => setOffset(offset + 10)
@@ -34,6 +36,9 @@ export const HomePage = () => {
 
 			<div className={styles.content}>
 				<Sort />
+				{isLoading && (
+					<Skeleton height={100} highlightColor='#d4d3d3' count={10} />
+				)}
 				{data && (
 					<motion.ul layout layoutId='list' className={styles.listCard}>
 						{data.map((item) => (
@@ -41,7 +46,6 @@ export const HomePage = () => {
 						))}
 					</motion.ul>
 				)}
-
 				<Button
 					className={styles.loadBtn}
 					disabled={disabledButton()}
